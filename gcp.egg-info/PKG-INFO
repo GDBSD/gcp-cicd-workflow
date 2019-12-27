@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: gcp
+Version: 0.1.0
+Summary: POC for setting up a GCP CI/CD pipeline.
+Home-page: UNKNOWN
+Author: Gary Biggs
+Author-email: gary_biggs@ultimatesoftware.com
+License: UNKNOWN
+Description: # Setting up a GCP CI/CD Pipeline
+        
+Platform: UNKNOWN
