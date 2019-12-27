@@ -1,0 +1,17 @@
+steps:
+# ↓↓↓↓↓↓↓ Start of Continuous Integration Part ↓↓↓↓↓↓↓↓↓↓↓↓ #####
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'clone',
+      '--recurse-submodules',
+      'https://github.com/GDBSD/gcp-cicd-workflow'
+    ]
+  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'checkout',
+      '$COMMIT_SHA'
+    ]
+  dir: 'gcp-cicd-workflow'
