@@ -1,5 +1,11 @@
 steps:
 # ↓↓↓↓↓↓↓ Start of Continuous Integration Part ↓↓↓↓↓↓↓↓↓↓↓↓ #####
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild' # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
+  entrypoint: '/bin/bash'
+  args: ['-c','virtualenv /workspace/venv' ]
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pip'
+  args: ['install', '-V', '-r', 'requirements.txt']
 - name: 'gcr.io/cloud-builders/git'
   args:
     [
@@ -7,6 +13,7 @@ steps:
       '--recurse-submodules',
       'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
+
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
   args:
