@@ -21,7 +21,7 @@ steps:
   args:
     [
       '-c',
-      'virtualenv /workspace/venv'
+      'sudo pip install virtualenv'
     ]
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
