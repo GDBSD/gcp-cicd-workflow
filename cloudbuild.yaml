@@ -16,13 +16,19 @@ steps:
       '$COMMIT_SHA'
     ]
   dir: 'gcp-cicd-workflow'
-- name: 'gcr.io/cloud-builders/git'
-  entrypoint: '/bin/bash'
-  args:
-    [
-      '-c',
-      'pip install virtualenv'
-    ]
+
+  # Creates a Python virtualenv stored in /workspace/venv that will persist across container runs.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pip'
+  args: ['install', '-V', '-r', 'requirements.txt']
+
+#- name: 'gcr.io/cloud-builders/git'
+#  entrypoint: '/bin/bash'
+#  args:
+#    [
+#      '-c',
+#      'pip install virtualenv'
+#    ]
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 #  entrypoint: '/bin/bash'
