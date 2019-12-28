@@ -18,7 +18,7 @@ steps:
   dir: 'gcp-cicd-workflow'
 
   # Creates a Python virtualenv stored in /workspace/venv that will persist across container runs.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+- name: 'gcr.io/cloud-builders/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
   args: ['install', '-V', '-r', 'requirements.txt']
 
