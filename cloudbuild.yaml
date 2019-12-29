@@ -30,11 +30,11 @@ steps:
   entrypoint: 'venv/bin/pip'
   args: ['install', '-V', '-r', 'requirements.txt']
   # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/python'
-#  args: ['-m', 'pytest', '-v']
-#  # runs pytest from the virtual environment (with all requirements)
-#  # using the verbose flag so you can see each individual test.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/python'
+  args: ['-m', 'pytest', '-v']
+  # runs pytest from the virtual environment (with all requirements)
+  # using the verbose flag so you can see each individual test.
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 #  entrypoint: 'venv/bin/pylint'
 #  args: ['my_module/']
