@@ -25,7 +25,7 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
+      'python3 -m venv /workspace/venv'
     ]
 #  dir: 'gcp-cicd-workflow'
 
