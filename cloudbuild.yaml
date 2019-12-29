@@ -1,5 +1,5 @@
 steps:
-# ↓↓↓↓↓↓↓ Start of Continuous Integration Part ↓↓↓↓↓↓↓↓↓↓↓↓ #####
+
   # Step 0
 - name: 'gcr.io/cloud-builders/git'
   args:
@@ -26,7 +26,7 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /gcp-cicd-workflow/venv'
+      'python3 -m venv /workspace/venv'
     ]
 
   # Step 3
