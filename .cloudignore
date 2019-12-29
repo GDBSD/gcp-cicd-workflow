@@ -14,3 +14,4 @@ tmp/**
 *.class
 *.so
 
+cloud_builder/*
