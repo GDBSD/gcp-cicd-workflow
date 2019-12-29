@@ -17,7 +17,7 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
-  dir: 'gcp-cicd-workflow'
+#  dir: 'gcp-cicd-workflow'
 
   # Step 2
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
@@ -49,38 +49,11 @@ steps:
   args: ['-m', 'pytest', '-v']
   dir: 'gcp-cicd-workflow'
 
-
+  # Step 5
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 #  entrypoint: 'venv/bin/pylint'
 #  args: ['my_module/']
 #  dir: 'gcp-cicd-workflow'
   # Runs pylint against the module my_module contained one folder under the project root
 
-#Step #4: /workspace/tests/test_my_module.py
-#Step #4: which is not the same as the test file we want to collect:
-#Step #4: /workspace/gcp-cicd-workflow/tests/test_my_module.py
-
-
-
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args:
-#    [
-#      '-c',
-#      'python3 -m venv /workspace/venv',
-#      'pip install --upgrade pip',
-#    ]
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pip'
-#  args: ['install', '-V', '-r', 'requirements.txt']
-#  # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash' # entrypoint: 'venv/bin/python'
-#  args: ['-m', 'pytest', '-v']
-#  # runs pytest from the virtual environment (with all requirements)
-#  # using the verbose flag so you can see each individual test.
-##- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-##  entrypoint: 'venv/bin/pylint'
-##  args: ['my_module/']
-#  #runs pylint against the module my_module contained one folder under the project root.
 
