@@ -20,7 +20,7 @@ steps:
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild' # Cloud Build automatically substitutes $PROJECT_ID for your Project ID.
   entrypoint: '/bin/bash'
-  args: ['-c','virtualenv /workspace/venv' ]
+  args: ['-c','python3 -m venv /workspace/venv' ]
   # Creates a Python virtualenv stored in /workspace/venv that will persist across container runs.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
