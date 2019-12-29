@@ -17,7 +17,6 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
-#  dir: 'gcp-cicd-workflow'
 
   # Step 2
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
@@ -26,28 +25,29 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /workspace/venv'
+      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
     ]
+#  dir: 'gcp-cicd-workflow'
 
   # Step 3
   # Installs any dependencies listed in the project's requirements.txt.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pip'
-  args:
-    [
-      'install',
-      '-V',
-      '-r',
-      'requirements.txt'
-    ]
-
-  # Step 4
-  # Runs pytest from the virtual environment (with all requirements)
-  # using the verbose flag so you can see each individual test.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/python'
-  args: ['-m', 'pytest', '-v']
-  dir: 'gcp-cicd-workflow'
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/pip'
+#  args:
+#    [
+#      'install',
+#      '-V',
+#      '-r',
+#      'requirements.txt'
+#    ]
+#
+#  # Step 4
+#  # Runs pytest from the virtual environment (with all requirements)
+#  # using the verbose flag so you can see each individual test.
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/python'
+#  args: ['-m', 'pytest', '-v']
+#  dir: 'gcp-cicd-workflow'
 
   # Step 5
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
