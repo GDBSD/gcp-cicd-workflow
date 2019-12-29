@@ -26,6 +26,7 @@ steps:
   args:
     [
       '-c',
+      'mkdir gcp-cicd-workflow',
       'python3 -m venv /workspace/venv'
     ]
 
@@ -47,7 +48,6 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/python'
   args: ['-m', 'pytest', '-v']
-  dir: '/gcp-cicd-workflow'
 
   # Step 5
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
