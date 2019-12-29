@@ -1,6 +1,6 @@
 steps:
 # ↓↓↓↓↓↓↓ Start of Continuous Integration Part ↓↓↓↓↓↓↓↓↓↓↓↓ #####
-- name: 'gcr.io/cloud-builders/git'
+- name: 'gcr.io/cloud-builders/git' # Step 1
   args:
     [
       'clone',
@@ -9,7 +9,7 @@ steps:
     ]
 
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-- name: 'gcr.io/cloud-builders/git'
+- name: 'gcr.io/cloud-builders/git' # Step 2
   args:
     [
       'checkout',
@@ -18,10 +18,10 @@ steps:
   dir: 'gcp-cicd-workflow'
 
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild' # Cloud Build automatically substitutes $PROJECT_ID for your Project ID.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild' # Step 3
   entrypoint: '/bin/bash'
-  args: ['-c','python3 -m venv /workspace/gcp-cicd-workflow/venv' ]
-#  dir: 'gcp-cicd-workflow'
+  args: ['-c','python3 -m venv /workspace/venv' ]
+  dir: 'gcp-cicd-workflow'
   # Creates a Python virtualenv stored in /workspace/venv that will persist across container runs.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
