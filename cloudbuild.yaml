@@ -17,7 +17,8 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
-  dir: 'gcp-cicd-workflow'
+  dir: '/'
+#  dir: 'gcp-cicd-workflow'
 
   # Step 2
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
