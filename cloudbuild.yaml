@@ -17,16 +17,17 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
+  dir: 'gcp-cicd-workflow'
 
   # Step 2
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: '/bin/bash'
-  args:
-    [
-      '-c',
-      'python3 -m venv /workspace/venv'
-    ]
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: '/bin/bash'
+#  args:
+#    [
+#      '-c',
+#      'python3 -m venv /workspace/venv'
+#    ]
 #  dir: 'gcp-cicd-workflow'
 
   # Step 3
