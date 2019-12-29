@@ -18,25 +18,46 @@ steps:
   dir: 'gcp-cicd-workflow'
 
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild' # Cloud Build automatically substitutes $PROJECT_ID for your Project ID.
   entrypoint: '/bin/bash'
-  args:
-    [
-      '-c',
-      'python3 -m venv /workspace/venv',
-      'pip install --upgrade pip',
-    ]
+  args: ['-c','virtualenv /workspace/venv' ]
+  # Creates a Python virtualenv stored in /workspace/venv that will persist across container runs.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
   args: ['install', '-V', '-r', 'requirements.txt']
   # Installs any dependencies listed in the project's requirements.txt.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: '/bin/bash' # entrypoint: 'venv/bin/python'
+  entrypoint: 'venv/bin/python'
   args: ['-m', 'pytest', '-v']
-  # runs pytest from the virtual environment (with all requirements)
+  # Runs pytest from the virtual environment (with all requirements)
   # using the verbose flag so you can see each individual test.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pylint'
+  args: ['my_module/']
+  # Runs pylint against the module my_module contained one folder under the project root
+
+
+
+
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pylint'
-#  args: ['my_module/']
-  #runs pylint against the module my_module contained one folder under the project root.
+#  entrypoint: '/bin/bash'
+#  args:
+#    [
+#      '-c',
+#      'python3 -m venv /workspace/venv',
+#      'pip install --upgrade pip',
+#    ]
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/pip'
+#  args: ['install', '-V', '-r', 'requirements.txt']
+#  # Installs any dependencies listed in the project's requirements.txt.
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: '/bin/bash' # entrypoint: 'venv/bin/python'
+#  args: ['-m', 'pytest', '-v']
+#  # runs pytest from the virtual environment (with all requirements)
+#  # using the verbose flag so you can see each individual test.
+##- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+##  entrypoint: 'venv/bin/pylint'
+##  args: ['my_module/']
+#  #runs pylint against the module my_module contained one folder under the project root.
 
