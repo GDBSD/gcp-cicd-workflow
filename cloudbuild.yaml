@@ -1,5 +1,6 @@
 steps:
 # ↓↓↓↓↓↓↓ Start of Continuous Integration Part ↓↓↓↓↓↓↓↓↓↓↓↓ #####
+  # Step 0
 - name: 'gcr.io/cloud-builders/git'
   args:
     [
@@ -8,6 +9,7 @@ steps:
       'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
 
+  # Step 1
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
   args:
@@ -17,15 +19,17 @@ steps:
     ]
   dir: 'gcp-cicd-workflow'
 
+  # Step 2
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
       '-c',
-      'python3 -m venv /workspace/venv'
+      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
     ]
 
+  # Step 3
   # Installs any dependencies listed in the project's requirements.txt.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
@@ -37,12 +41,15 @@ steps:
       'requirements.txt'
     ]
 
+  # Step 4
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 #  entrypoint: 'venv/bin/python'
 #  args: ['-m', 'pytest', '-v']
 #  # Runs pytest from the virtual environment (with all requirements)
 #  # using the verbose flag so you can see each individual test.
 #  dir: 'gcp-cicd-workflow'
+
+
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 #  entrypoint: 'venv/bin/pylint'
 #  args: ['my_module/']
