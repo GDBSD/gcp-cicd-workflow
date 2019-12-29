@@ -23,7 +23,8 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /workspace/venv'
+      'python3 -m venv /workspace/venv',
+      'pip install --upgrade pip',
     ]
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
