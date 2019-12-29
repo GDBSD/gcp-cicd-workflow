@@ -7,7 +7,7 @@ steps:
   # Step 1
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
-  args: ['clone', '$COMMIT_SHA']
+  args: ['checkout', '$COMMIT_SHA']
   dir: 'gcp-cicd-workflow'
 
 #  # Step 2
