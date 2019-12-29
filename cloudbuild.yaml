@@ -28,20 +28,19 @@ steps:
       '-c',
       'python3 -m venv /workspace/venv'
     ]
-#  dir: 'gcp-cicd-workflow'
 
   # Step 3
   # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pip'
-#  args:
-#    [
-#      'install',
-#      '-V',
-#      '-r',
-#      'requirements.txt'
-#    ]
-#
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pip'
+  args:
+    [
+      'install',
+      '-V',
+      '-r',
+      'requirements.txt'
+    ]
+
 #  # Step 4
 #  # Runs pytest from the virtual environment (with all requirements)
 #  # using the verbose flag so you can see each individual test.
