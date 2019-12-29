@@ -4,13 +4,7 @@ steps:
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-  args: ['-c', 'python3 -m venv /workspace/venv']
-
-  # Step 2
-  # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: '/bin/bash'
-  args: ['-c', 'python3 -m venv /workspace/venv']
+  args: ['-c', 'python3 -m venv /workspace/gcp-cicd-workflow/venv']
 
   # Step 0
 - name: 'gcr.io/cloud-builders/git'
