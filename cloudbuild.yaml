@@ -1,6 +1,6 @@
 steps:
 # ↓↓↓↓↓↓↓ Start of Continuous Integration Part ↓↓↓↓↓↓↓↓↓↓↓↓ #####
-- name: 'gcr.io/cloud-builders/git' # Step 1
+- name: 'gcr.io/cloud-builders/git'
   args:
     [
       'clone',
@@ -9,7 +9,7 @@ steps:
     ]
 
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-- name: 'gcr.io/cloud-builders/git' # Step 2
+- name: 'gcr.io/cloud-builders/git'
   args:
     [
       'checkout',
@@ -18,25 +18,35 @@ steps:
   dir: 'gcp-cicd-workflow'
 
   # Cloud Build automatically substitutes $PROJECT_ID for your Project ID
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild' # Step 3
-  entrypoint: '/bin/bash'
-  args: ['-c','python3 -m venv /workspace/venv' ]
-  dir: 'gcp-cicd-workflow'
-  # Creates a Python virtualenv stored in /workspace/venv that will persist across container runs.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pip'
-  args: ['install', '-V', '-r', 'requirements.txt']
+  entrypoint: '/bin/bash'
+  args:
+    [
+      '-c',
+      'python3 -m venv /workspace/venv'
+    ]
+
   # Installs any dependencies listed in the project's requirements.txt.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/python'
-  args: ['-m', 'pytest', '-v']
-  # Runs pytest from the virtual environment (with all requirements)
-  # using the verbose flag so you can see each individual test.
-  dir: 'gcp-cicd-workflow'
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pylint'
-  args: ['my_module/']
-  dir: 'gcp-cicd-workflow'
+  entrypoint: 'venv/bin/pip'
+  args:
+    [
+      'install',
+      '-V',
+      '-r',
+      'requirements.txt'
+    ]
+
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/python'
+#  args: ['-m', 'pytest', '-v']
+#  # Runs pytest from the virtual environment (with all requirements)
+#  # using the verbose flag so you can see each individual test.
+#  dir: 'gcp-cicd-workflow'
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/pylint'
+#  args: ['my_module/']
+#  dir: 'gcp-cicd-workflow'
   # Runs pylint against the module my_module contained one folder under the project root
 
 #Step #4: /workspace/tests/test_my_module.py
