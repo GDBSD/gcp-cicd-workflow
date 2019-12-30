@@ -48,5 +48,5 @@ steps:
   args:
     [
       'python',
-      '-m'
+      '-m', 'pytest'
     ]
