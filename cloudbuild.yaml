@@ -19,6 +19,13 @@ steps:
     ]
   dir: 'gcp-cicd-workflow'
 
+- name: 'run tests'
+  entrypoint: '/bin/bash'
+  args:
+    [
+      '-c', '-m', 'pytest', '-v'
+    ]
+
   # Step 2 - Install Python 3
   # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
