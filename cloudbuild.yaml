@@ -23,3 +23,13 @@ steps:
       '-r',
       'requirements.txt'
     ]
+
+  # Step 2 - Clone the GitHub repo
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'clone',
+      '--recurse-submodules',
+      'https://github.com/GDBSD/gcp-cicd-workflow'
+    ]
+  dir: 'gcp-cicd-workflow'
