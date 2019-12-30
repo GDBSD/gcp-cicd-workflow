@@ -17,7 +17,7 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
-  dir: 'gcp-cicd-workflow'
+  dir: 'workspace' # 'gcp-cicd-workflow'
 
   # Step 2 - Install Python 3
   # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
