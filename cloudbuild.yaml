@@ -2,37 +2,17 @@
 
 steps:
 
-  # Step 0
-  # args: ['clone', '--recurse-submodules', 'https://github.com/GDBSD/gcp-cicd-workflow', '.']
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'clone',
-      '--recurse-submodules',
-      'https://github.com/GDBSD/gcp-cicd-workflow', '.'
-    ]
-
-  # Step 1 - Checkout the branch we just pushed
-  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'checkout',
-      '$COMMIT_SHA'
-    ]
-  dir: 'gcp-cicd-workflow'
-
-  # Step 2 - Install Python 3
+  # Step 0 - Install Python 3
   # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
       '-c',
-      'python3 -m venv /workspace/gcp-cicd'
+      'python3 -m venv /workspace/gcp-cicd-workflow/gcp-cicd'
     ]
 
-  # Step 3 - Install the dependencies
+  # Step 1 - Install the dependencies
   # Installs any dependencies listed in the project's requirements.txt.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp-cicd/bin/pip'
@@ -43,19 +23,3 @@ steps:
       '-r',
       'requirements.txt'
     ]
-
-  # Step 4
-  # Runs pytest from the virtual environment (with all requirements)
-  # using the verbose flag so you can see each individual test.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'gcp-cicd/bin/python'
-  args: ['-m', 'pytest', '-v']
-
-  # Step 5
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pylint'
-#  args: ['my_module/']
-#  dir: 'gcp-cicd-workflow'
-  # Runs pylint against the module my_module contained one folder under the project root
-
-
