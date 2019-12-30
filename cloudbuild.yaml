@@ -9,7 +9,7 @@ steps:
       '-c',
       'python3 -m venv /workspace/gcp-cicd-workflow/venv'
     ]
-  dir: 'gcp-cicd-workflow'
+#  dir: 'gcp-cicd-workflow'
 
   # Step 3 - Install the dependencies
   # Installs any dependencies listed in the project's requirements.txt.
