@@ -22,15 +22,15 @@ steps:
       'requirements.txt'
     ]
 
-#  # Step 0 - Clone the repo
-#- name: 'gcr.io/cloud-builders/git'
-#  args:
-#    [
-#      'clone',
-#      '--recurse-submodules',
-#      'https://github.com/GDBSD/gcp-cicd-workflow'
-#    ]
-#
+  # Step 0 - Clone the repo
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'clone',
+      '--recurse-submodules',
+      'https://github.com/GDBSD/gcp-cicd-workflow'
+    ]
+
 #  # Step 1 - Checkout the branch we just pushed
 #  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 #- name: 'gcr.io/cloud-builders/git'
