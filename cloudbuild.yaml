@@ -9,8 +9,7 @@ steps:
   args:
     [
       '-c',
-      'mkdir gcp-cicd-workflow',
-      'python3 -m venv /workspace/gcp-cicd-workflow/gcp-cicd'
+      'python3 -m venv /workspace/gcp-cicd'
     ]
 
   # Step 1 - Install the dependencies
