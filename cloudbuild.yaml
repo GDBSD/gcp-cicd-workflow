@@ -1,29 +1,6 @@
 steps:
 
-#   Step 2 - Install Python 3
-#   Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args:
-#    [
-#      '-c',
-#      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
-#    ]
-#  dir: 'gcp-cicd-workflow'
-
-  # Step 3 - Install the dependencies
-  # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pip'
-#  args:
-#    [
-#      'install',
-#      '-V',
-#      '-r',
-#      'requirements.txt'
-#    ]
-
-  # Step 0 - Clone the repo
+  # Step 0
 - name: 'gcr.io/cloud-builders/git'
   args:
     [
@@ -31,17 +8,16 @@ steps:
       '--recurse-submodules',
       'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
-  dir: 'gcp-cicd-workflow'
 
-#  # Step 1 - Checkout the branch we just pushed
-#  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
+  # Step 1 - Checkout the branch we just pushed
+  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
   args:
     [
       'checkout',
       '$COMMIT_SHA'
     ]
-#  dir: 'gcp-cicd-workflow'
+  dir: 'gcp-cicd-workflow'
 
   # Step 2 - Install Python 3
   # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
