@@ -1,12 +1,15 @@
+# https://stackoverflow.com/questions/59522052/gcp-cloudbuild-yaml-creates-workspace-tests-but-need-workspace-my-app-tests
+
 steps:
 
   # Step 0
+  # args: ['clone', '--recurse-submodules', 'https://github.com/GDBSD/gcp-cicd-workflow', '.']
 - name: 'gcr.io/cloud-builders/git'
   args:
     [
       'clone',
       '--recurse-submodules',
-      'https://github.com/GDBSD/gcp-cicd-workflow'
+      'https://github.com/GDBSD/gcp-cicd-workflow', '.'
     ]
 
   # Step 1 - Checkout the branch we just pushed
@@ -17,7 +20,7 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
-  dir: 'workspace' # 'gcp-cicd-workflow'
+  dir: 'gcp-cicd-workflow'
 
   # Step 2 - Install Python 3
   # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
