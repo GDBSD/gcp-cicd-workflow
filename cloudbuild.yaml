@@ -19,34 +19,27 @@ steps:
     ]
   dir: 'gcp-cicd-workflow'
 
-- name: 'run tests'
+  # Step 2 - Install Python 3
+  # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', '-m', 'pytest', '-v'
+      '-c',
+      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
     ]
-
-  # Step 2 - Install Python 3
-  # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args:
-#    [
-#      '-c',
-#      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
-#    ]
 
   # Step 3 - Install the dependencies
   # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pip'
-#  args:
-#    [
-#      'install',
-#      '-V',
-#      '-r',
-#      'requirements.txt'
-#    ]
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pip'
+  args:
+    [
+      'install',
+      '-V',
+      '-r',
+      'requirements.txt'
+    ]
 
 #  # Step 4
 #  # Runs pytest from the virtual environment (with all requirements)
