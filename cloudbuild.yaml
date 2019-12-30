@@ -2,13 +2,13 @@ steps:
 
 #   Step 2 - Install Python 3
 #   Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: '/bin/bash'
-  args:
-    [
-      '-c',
-      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
-    ]
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: '/bin/bash'
+#  args:
+#    [
+#      '-c',
+#      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
+#    ]
 #  dir: 'gcp-cicd-workflow'
 
   # Step 3 - Install the dependencies
