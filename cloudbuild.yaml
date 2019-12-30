@@ -34,12 +34,12 @@ steps:
 
 #  # Step 1 - Checkout the branch we just pushed
 #  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-#- name: 'gcr.io/cloud-builders/git'
-#  args:
-#    [
-#      'checkout',
-#      '$COMMIT_SHA'
-#    ]
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'checkout',
+      '$COMMIT_SHA'
+    ]
 #  dir: 'gcp-cicd-workflow'
 
   # Step 2 - Install Python 3
