@@ -9,27 +9,28 @@ steps:
       '-c',
       'python3 -m venv /workspace/gcp-cicd-workflow/venv'
     ]
+  dir: 'gcp-cicd-workflow'
 
   # Step 3 - Install the dependencies
   # Installs any dependencies listed in the project's requirements.txt.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pip'
-  args:
-    [
-      'install',
-      '-V',
-      '-r',
-      'requirements.txt'
-    ]
-
-  # Step 0 - Clone the repo
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'clone',
-      '--recurse-submodules',
-      'https://github.com/GDBSD/gcp-cicd-workflow'
-    ]
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/pip'
+#  args:
+#    [
+#      'install',
+#      '-V',
+#      '-r',
+#      'requirements.txt'
+#    ]
+#
+#  # Step 0 - Clone the repo
+#- name: 'gcr.io/cloud-builders/git'
+#  args:
+#    [
+#      'clone',
+#      '--recurse-submodules',
+#      'https://github.com/GDBSD/gcp-cicd-workflow'
+#    ]
 
 #  # Step 1 - Checkout the branch we just pushed
 #  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
@@ -48,7 +49,6 @@ steps:
 #  args:
 #    [
 #      '-c',
-##      'mkdir gcp-cicd-workflow',
 #      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
 #    ]
 
