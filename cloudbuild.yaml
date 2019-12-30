@@ -1,14 +1,17 @@
 steps:
 
-  # Install Python 3
-- name: 'Install Python 3'
+#   Step 2 - Install Python 3
+#   Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
-      'sudo apt install python3.7'
+      '-c',
+      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
     ]
 
-#  # Step 0
+
+#  # Step 0 - Clone the repo
 #- name: 'gcr.io/cloud-builders/git'
 #  args:
 #    [
@@ -25,9 +28,7 @@ steps:
 #      'checkout',
 #      '$COMMIT_SHA'
 #    ]
-  dir: 'gcp-cicd-workflow'
-
-#  name: ''
+#  dir: 'gcp-cicd-workflow'
 
   # Step 2 - Install Python 3
   # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
