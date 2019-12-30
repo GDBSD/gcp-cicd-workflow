@@ -26,13 +26,13 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /workspace/gcp-cicd-workflow/venv'
+      'python3 -m venv /workspace/gcp-cicd'
     ]
 
   # Step 3 - Install the dependencies
   # Installs any dependencies listed in the project's requirements.txt.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pip'
+  entrypoint: 'gcp-cicd/bin/pip'
   args:
     [
       'install',
