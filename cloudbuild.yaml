@@ -31,6 +31,7 @@ steps:
       '--recurse-submodules',
       'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
+  dir: 'gcp-cicd-workflow'
 
 #  # Step 1 - Checkout the branch we just pushed
 #  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
