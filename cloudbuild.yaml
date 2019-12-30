@@ -33,3 +33,12 @@ steps:
       'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
   dir: 'gcp-cicd-workflow'
+
+  # Step 3 - Checkout the branch we just pushed
+  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'checkout',
+      '$COMMIT_SHA'
+    ]
