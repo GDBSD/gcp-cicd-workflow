@@ -48,6 +48,6 @@ steps:
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
   # using the verbose flag so you can see each individual test.
-- name: 'python:3.7'
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'venv/bin/pip'
   args: ['-m', 'pytest', '-v']
