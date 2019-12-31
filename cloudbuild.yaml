@@ -11,12 +11,12 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /workspace/gcp_cicd_workflow'
+      'python3 -m virtualenv /workspace/venv'
     ]
 
   # Step 1 - Clone the GitHub repo
 - name: 'gcr.io/cloud-builders/git'
-  entrypoint: 'workspace/venv'
+  entrypoint: 'venv'
   args:
     [
       'clone',
