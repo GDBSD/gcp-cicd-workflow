@@ -28,7 +28,8 @@ steps:
   args:
     [
       '-c',
-      'python3 -m venv /workspace/gcp-cicd'
+      'python3 -m venv /workspace/gcp-cicd',
+      'source gcp-cicd/bin/activate'
     ]
 
   # Step 3 - Install the dependencies
@@ -43,9 +44,9 @@ steps:
       'requirements.txt'
     ]
 
-- name: 'python:3.7'
-  args:
-    [
-      'python',
-      'print("hello world")'
-    ]
+#- name: 'python:3.7'
+#  args:
+#    [
+#      'python', '-m',
+#      'pytest'
+#    ]
