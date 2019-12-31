@@ -16,7 +16,6 @@ steps:
 
   # Step 1 - Clone the GitHub repo
 - name: 'gcr.io/cloud-builders/git'
-  entrypoint: 'venv'
   args:
     [
       'clone',
