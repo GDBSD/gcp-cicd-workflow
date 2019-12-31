@@ -45,6 +45,7 @@ steps:
     ]
 
 - name: 'python:3.7'
+  entrypoint: 'gcp-cicd/bin/pip'
   args:
     [
       'python', '-m',
