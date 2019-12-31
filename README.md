@@ -6,9 +6,6 @@ Using [this tutorial](https://github.com/GoogleCloudPlatform/professional-servic
 
 - [x] Create python cloud builder
 - [x] Successful build with Cloud Build
-- [] Create 
-- Allow build only after all tests pass
-- Implement GitOps
-
-
-python3 -m venv gcp-cicd-venv
+- [ ] Successful test run with PyTest
+- [ ] Allow build only after all tests pass
+- [ ] Implement GitOps
