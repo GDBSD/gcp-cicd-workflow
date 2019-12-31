@@ -31,4 +31,4 @@ steps:
       'checkout',
       '$COMMIT_SHA'
     ]
-  dir: 'workspace/gcp-cicd-workflow'
+  dir: 'gcp-cicd-workflow'
