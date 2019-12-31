@@ -44,9 +44,9 @@ steps:
       'requirements.txt'
     ]
 
-#- name: 'python:3.7'
-#  args:
-#    [
-#      'python', '-m',
-#      'pytest'
-#    ]
+- name: 'python:3.7'
+  args:
+    [
+      'python', '-m',
+      'pytest'
+    ]
