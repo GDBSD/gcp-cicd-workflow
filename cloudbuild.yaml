@@ -1,54 +1,25 @@
 # https://stackoverflow.com/questions/59522052/gcp-cloudbuild-yaml-creates-workspace-tests-but-need-workspace-my-app-tests
 
+# Each step specified in the cloudbuild.yaml is a separate, ephemeral run of a docker image
 steps:
 
-  # Step 0 - Clone the GitHub repo
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'clone',
-      '--recurse-submodules',
-      'https://github.com/GDBSD/gcp-cicd-workflow'
-    ]
-
-  # Step 1 - Checkout the branch we just pushed
-  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'checkout',
-      '$COMMIT_SHA'
-    ]
-  dir: 'gcp-cicd-workflow'
-
-  # Step 2 - Install Python 3
-  # Cloud Build automatically substitutes $PROJECT_ID for the GCP Project ID
+  # Step 0 - Create the environment
+  #   The /workspace/ directory is preserved between runs. One way to carry python packages
+  #   forward is to use a virtualenv housed in /workspace/
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
       '-c',
-      'python3 -m venv /workspace/gcp-cicd',
-      'source gcp-cicd/bin/activate'
+      'python3 -m venv /workspace/gcp_cicd_workflow'
     ]
 
-  # Step 3 - Install the dependencies
-  # Installs any dependencies listed in the project's requirements.txt.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'gcp-cicd/bin/pip'
+  # Step 1 - Clone the GitHub repo
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'workspace/venv'
   args:
     [
-      'install',
-      '-V',
-      '-r',
-      'requirements.txt'
-    ]
-
-- name: 'python:3.7'
-  entrypoint: '/bin/bash'
-  args:
-    [
-      'source gcp-cicd/bin/activate',
-      'python', '-m',
-      'pytest'
+      'clone',
+      '--recurse-submodules',
+      'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
