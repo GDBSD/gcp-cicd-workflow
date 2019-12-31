@@ -25,6 +25,7 @@ steps:
 - name: python:3.7
   args:
     [
+      'python', '-m',
       'import os',
       'print("hello world")'
     ]
