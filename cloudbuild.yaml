@@ -42,12 +42,13 @@ steps:
       'install',
       '-V',
       '-r',
-      'requirements.txt'
+      'requirements.txt',
+      '-m', 'pytest'
     ]
 
-  # Step 4
-  # Runs pytest from the virtual environment (with all requirements)
-  # using the verbose flag so you can see each individual test.
-- name: 'python:3.7'
-  entrypoint: 'venv'
-  args: ['-m', 'pytest', '-v']
+#  # Step 4
+#  # Runs pytest from the virtual environment (with all requirements)
+#  # using the verbose flag so you can see each individual test.
+#- name: 'python:3.7'
+#  entrypoint: 'venv/pip'
+#  args: ['-m', 'pytest', '-v']
