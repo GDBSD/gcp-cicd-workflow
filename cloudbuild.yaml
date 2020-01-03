@@ -34,6 +34,17 @@ steps:
   - |
         echo "New volume" > /persistent_volume/file
 
+- name: 'ubuntu'
+  volumes:
+  - name: 'gcp_cicd_workflow'
+    path: '/persistent_volume'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+        echo "Have the wew volume" > /persistent_volume/file
+
+
 #  # Step 1 - Clone the GitHub repo
 #- name: 'gcr.io/cloud-builders/git'
 #  args:
