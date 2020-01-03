@@ -2,6 +2,10 @@
 # wallet.py
 
 
+def say_hello():
+    print('Hello!')
+
+
 class InsufficientAmount(Exception):
     pass
 
@@ -18,3 +22,7 @@ class Wallet:
 
     def add_cash(self, amount):
         self.balance += amount
+
+
+if __name__ == "__main__":
+    say_hello()
