@@ -1,9 +1,19 @@
-# https://stackoverflow.com/questions/59522052/gcp-cloudbuild-yaml-creates-workspace-tests-but-need-workspace-my-app-tests
 
-# Each step specified in the cloudbuild.yaml is a separate, ephemeral run of a docker image
+# Each step specified in the cloudbuild.yaml is a separate, ephemeral run of a docker image.artifacts:
+# As an aid to someone unfamiliar with Docker just about every element in this file
+# is documented.
+
+# Syntax comments:
+#   "entrypoint" configures a container that will run as an executable.
+#  "/bin/bash" In an Ubuntu command used to link to bash.artifacts:
+#  The "-c" bin/bash argument overrides the rest of the command line from that point on,
+      # so that it's no longer going through bash's option handling.artifacts:
+#  The "-m" Python argument is the module name. Python searches sys.path for the named module and execute its contents
+     # as the __main__ module
+
 steps:
 
-  # Step 0 - Create the environment
+  # Step 0 - Create the environment and the project folder
   #   The /workspace/ directory is preserved between runs. One way to carry python packages
   #   forward is to use a virtualenv housed in /workspace/
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
@@ -11,39 +21,40 @@ steps:
   args:
     [
       '-c',
-      'python3 -m virtualenv /workspace/venv'
+      'python3 -m virtualenv /workspace/venv', # os.mkdir('tempDir')
+      'python3 -m os.mkdir(workspace/gcp_cicd_workflow'
     ]
 
-  # Step 1 - Clone the GitHub repo
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'clone',
-      '--recurse-submodules',
-      'https://github.com/GDBSD/gcp-cicd-workflow'
-    ]
-
-  # Step 2 - Checkout the branch we just pushed
-  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-- name: 'gcr.io/cloud-builders/git'
-  args:
-    [
-      'checkout',
-      '$COMMIT_SHA'
-    ]
+#  # Step 1 - Clone the GitHub repo
+#- name: 'gcr.io/cloud-builders/git'
+#  args:
+#    [
+#      'clone',
+#      '--recurse-submodules',
+#      'https://github.com/GDBSD/gcp-cicd-workflow'
+#    ]
+#
+#  # Step 2 - Checkout the branch we just pushed
+#  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
+#- name: 'gcr.io/cloud-builders/git'
+#  args:
+#    [
+#      'checkout',
+#      '$COMMIT_SHA'
+#    ]
 #  dir: 'gcp-cicd-workflow'
-
-  # Step 3 - Install the dependencies
-  # Installs any dependencies listed in the project's requirements.txt.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pip'
-  args:
-    [
-      'install',
-      '-V',
-      '-r',
-      'requirements.txt'
-    ]
+#
+#  # Step 3 - Install the dependencies
+#  # Installs any dependencies listed in the project's requirements.txt.
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'venv/bin/pip'
+#  args:
+#    [
+#      'install',
+#      '-V',
+#      '-r',
+#      'requirements.txt'
+#    ]
 
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
