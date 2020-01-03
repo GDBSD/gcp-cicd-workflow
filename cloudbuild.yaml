@@ -14,14 +14,12 @@
 steps:
 
   # Step 0 - Create the environment and the project folder
-  #   The /workspace/ directory is preserved between runs. One way to carry python packages
-  #   forward is to use a virtualenv housed in /workspace/
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
       '-c',
-      'python3 -m virtualenv /workspace/venv', # os.mkdir('tempDir')
+      'python3 -m venv /workspace/gcp_cicd',
       'python3 -m os.mkdir(workspace/gcp_cicd_workflow'
     ]
 
