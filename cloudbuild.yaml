@@ -41,18 +41,18 @@ steps:
       '$COMMIT_SHA'
     ]
   dir: 'gcp-cicd-workflow'
-#
-#  # Step 3 - Install the dependencies
-#  # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'venv/bin/pip'
-#  args:
-#    [
-#      'install',
-#      '-V',
-#      '-r',
-#      'requirements.txt'
-#    ]
+
+  # Step 3 - Install the dependencies
+  # Installs any dependencies listed in the project's requirements.txt.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pip'
+  args:
+    [
+      'install',
+      '-V',
+      '-r',
+      'requirements.txt'
+    ]
 
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
