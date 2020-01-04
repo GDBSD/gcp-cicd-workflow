@@ -54,10 +54,12 @@ steps:
       '-r',
       'requirements.txt'
     ]
+  dir: 'gcp-cicd-workflow'
 
-#  # Step 4
-#  # Runs pytest from the virtual environment (with all requirements)
-#  # using the verbose flag so you can see each individual test.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args: ['-m', 'pytest', '-v']
+  # Step 4
+  # Runs pytest from the virtual environment (with all requirements)
+  # using the verbose flag so you can see each individual test.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: '/bin/bash'
+  args: ['-m', 'pytest', '-v']
+  dir: 'gcp-cicd-workflow'
