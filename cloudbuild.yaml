@@ -24,16 +24,16 @@ steps:
     ]
 
   # Step 1 - Create the persistent volume
-#- name: 'ubuntu'
-#  volumes:
-#  - name: 'gcp_cicd_workflow'
-#    path: '/persistent_volume'
-#  entrypoint: 'bash'
-#  args:
-#  - '-c'
-#  - |
-#        echo "New volume" > /persistent_volume/file
-#
+- name: 'ubuntu'
+  volumes:
+  - name: 'gcp_cicd_workflow'
+    path: '/persistent_volume'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+        echo "New volume" > /persistent_volume/file
+
 #- name: 'ubuntu'
 #  volumes:
 #  - name: 'gcp_cicd_workflow'
