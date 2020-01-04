@@ -56,9 +56,9 @@ steps:
   # Step 2 - Checkout the branch we just pushed
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
-  volumes:
-    - name: 'gcp-cicd-workflow'
-      path: '/persistent_volume'
+#  volumes:
+#    - name: 'gcp-cicd-workflow'
+#      path: '/persistent_volume'
   args:
     [
       'checkout',
