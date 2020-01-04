@@ -49,12 +49,17 @@ steps:
     ]
   dir: 'gcp-cicd-workflow'
 
-#- name: 'gcr.io/cloud-builders/docker'
-#  volumes:
-#  - name: 'vol1'
-#    path: '/persistent_volume'
-##  args: ['run', '-v', 'vol1:/data', 'alpine', 'cat', 'data/file']
-#  args: ['run', '-v', 'vol1:/data']
+  # Step 3 - Install the dependencies
+  # Installs any dependencies listed in the project's requirements.txt.
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'gcp_cicd/bin/pip'
+  args:
+    [
+      'install',
+      '-V',
+      '-r',
+      'requirements.txt'
+    ]
 
 # Everything be;low this line works _except_ Step 4
 #  # Step 0 - Create the environment and the project folder
