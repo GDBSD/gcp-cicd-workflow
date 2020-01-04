@@ -19,7 +19,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   volumes:
-  - name: 'repo_code'
+  - name: 'gcp-cicd-workflow'
     path: '/persistent_volume'
   args:
     [
@@ -40,14 +40,14 @@ steps:
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
   volumes:
-    - name: 'repo_code'
+    - name: 'gcp-cicd-workflow'
       path: '/persistent_volume'
   args:
     [
       'checkout',
       '$COMMIT_SHA'
     ]
-#  dir: 'gcp-cicd-workflow
+  dir: 'gcp-cicd-workflow'
 
 #- name: 'gcr.io/cloud-builders/docker'
 #  volumes:
