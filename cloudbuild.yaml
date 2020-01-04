@@ -23,16 +23,49 @@ steps:
 #      'python3 -m os.mkdir(workspace/gcp_cicd_workflow'
     ]
 
-  # Step 1 - Create the persistent column
-- name: 'ubuntu'
-  volumes:
-  - name: 'gcp_cicd_workflow'
-    path: '/persistent_volume'
-  entrypoint: 'bash'
+  # Step 1 - Create the persistent volume
+#- name: 'ubuntu'
+#  volumes:
+#  - name: 'gcp_cicd_workflow'
+#    path: '/persistent_volume'
+#  entrypoint: 'bash'
+#  args:
+#  - '-c'
+#  - |
+#        echo "New volume" > /persistent_volume/file
+#
+#- name: 'ubuntu'
+#  volumes:
+#  - name: 'gcp_cicd_workflow'
+#    path: '/persistent_volume'
+#  entrypoint: 'bash'
+#  args:
+#  - '-c'
+#  - |
+#        echo "Have the wew volume" > /persistent_volume/file
+
+
+  # Step 1 - Clone the GitHub repo
+- name: 'gcr.io/cloud-builders/git'
   args:
-  - '-c'
-  - |
-        echo "New volume" > /persistent_volume/file
+    [
+      'clone',
+      '--recurse-submodules',
+      'https://github.com/GDBSD/gcp-cicd-workflow'
+    ]
+
+  # Step 2 - Checkout the branch we just pushed
+  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
+- name: 'gcr.io/cloud-builders/git'
+  volumes:
+    - name: 'gcp-cicd-workflow'
+      path: '/persistent_volume'
+  args:
+    [
+      'checkout',
+      '$COMMIT_SHA'
+    ]
+  dir: 'gcp-cicd-workflow'
 
 - name: 'ubuntu'
   volumes:
@@ -45,25 +78,6 @@ steps:
         echo "Have the wew volume" > /persistent_volume/file
 
 
-#  # Step 1 - Clone the GitHub repo
-#- name: 'gcr.io/cloud-builders/git'
-#  args:
-#    [
-#      'clone',
-#      '--recurse-submodules',
-#      'https://github.com/GDBSD/gcp-cicd-workflow'
-#    ]
-#
-#  # Step 2 - Checkout the branch we just pushed
-#  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-#  # I need to save this
-#- name: 'gcr.io/cloud-builders/git'
-#  args:
-#    [
-#      'checkout',
-#      '$COMMIT_SHA'
-#    ]
-#  dir: 'gcp-cicd-workflow'
 #
 #  # Step 3 - Install the dependencies
 #  # Installs any dependencies listed in the project's requirements.txt.
