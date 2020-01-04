@@ -15,23 +15,46 @@
      # as the __main__ module
 
 steps:
-
-- name: 'ubuntu'
+  # Step 0 - Create the environment
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: '/bin/bash'
   volumes:
-  - name: 'vol1'
+  - name: 'repo_code'
     path: '/persistent_volume'
-  entrypoint: 'bash'
   args:
-  - '-c'
-  - |
-        echo "This is the code volume"
+    [
+      '-c',
+      'python3 -m venv /workspace/gcp_cicd'
+    ]
 
-- name: 'gcr.io/cloud-builders/docker'
+  # Step 1 - Clone the GitHub repo
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    [
+      'clone',
+      '--recurse-submodules',
+      'https://github.com/GDBSD/gcp-cicd-workflow'
+    ]
+
+  # Step 2 - Checkout the branch we just pushed
+  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
+- name: 'gcr.io/cloud-builders/git'
   volumes:
-  - name: 'vol1'
-    path: '/persistent_volume'
-#  args: ['run', '-v', 'vol1:/data', 'alpine', 'cat', 'data/file']
-  args: ['run', '-v', 'vol1:/data']
+    - name: 'repo_code'
+      path: '/persistent_volume'
+  args:
+    [
+      'checkout',
+      '$COMMIT_SHA'
+    ]
+#  dir: 'gcp-cicd-workflow
+
+#- name: 'gcr.io/cloud-builders/docker'
+#  volumes:
+#  - name: 'vol1'
+#    path: '/persistent_volume'
+##  args: ['run', '-v', 'vol1:/data', 'alpine', 'cat', 'data/file']
+#  args: ['run', '-v', 'vol1:/data']
 
 # Everything be;low this line works _except_ Step 4
 #  # Step 0 - Create the environment and the project folder
