@@ -18,9 +18,6 @@ steps:
   # Step 0 - Create the environment
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-  volumes:
-  - name: 'gcp-cicd-workflow'
-    path: '/persistent_volume'
   args:
     [
       '-c',
