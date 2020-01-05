@@ -60,7 +60,7 @@ steps:
   # using the verbose flag so you can see each individual test.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
-  args: ['-m gcp-cicd-workflow', 'pytest', '-v']
+  args: ['print("Hello World")','-m', 'pytest', '-v']
 
 # Everything be;low this line works _except_ Step 4
 #  # Step 0 - Create the environment and the project folder
@@ -113,6 +113,5 @@ steps:
 #  # Runs pytest from the virtual environment (with all requirements)
 #  # using the verbose flag so you can see each individual test.
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args: ['-m', 'pytest', '-v']
-#  dir: 'gcp-cicd-workflow'
+#  entrypoint: 'gcp_cicd/bin/python'
+#  args: ['-m ', 'pytest', '-v']
