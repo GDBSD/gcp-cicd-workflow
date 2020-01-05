@@ -39,15 +39,12 @@ steps:
   # Step 2 - Checkout the branch we just pushed
   # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
 - name: 'gcr.io/cloud-builders/git'
-  volumes:
-    - name: 'gcp-cicd-workflow'
-      path: '/persistent_volume'
   args:
     [
       'checkout',
       '$COMMIT_SHA'
     ]
-  dir: 'gcp-cicd-workflow'
+  dir: 'venv/gcp-cicd-workflow'
 
   # Step 3 - Install the dependencies
   # Installs any dependencies listed in the project's requirements.txt.
@@ -61,14 +58,6 @@ steps:
       'requirements.txt'
     ]
 
-- id: 'Check Code'
-  name: gcr.io/cloud-builders/git
-  entrypoint: 'bin/bash'
-  args:
-    - -c
-    - |
-      source: /workspace/gcp_cicd/bin/pip &&
-      echo "I found the data"
 
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
