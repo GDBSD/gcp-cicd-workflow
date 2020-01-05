@@ -61,7 +61,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
 #  args: ['-m', 'pytest', '-v']
-  args: ['-c', 'import os', 'dirlist = os.listdir()', 'print(dirlist)]
+  args: ['-c', 'import os', 'dirlist = os.listdir()', 'print(dirlist)']
 
 # Everything be;low this line works _except_ Step 4
 #  # Step 0 - Create the environment and the project folder
