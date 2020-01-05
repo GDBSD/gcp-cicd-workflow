@@ -61,7 +61,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args: ['-m', 'pytest', '-v']
-  path: 'workspace/gcp_cicd'
+  dir: 'workspace/gcp_cicd'
 
 # Everything be;low this line works _except_ Step 4
 #  # Step 0 - Create the environment and the project folder
