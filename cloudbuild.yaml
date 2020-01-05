@@ -55,7 +55,6 @@ steps:
       'requirements.txt'
     ]
 
-
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
   # using the verbose flag so you can see each individual test.
