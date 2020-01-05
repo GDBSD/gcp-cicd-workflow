@@ -66,6 +66,6 @@ steps:
   # Runs pylint against the module my_module contained one folder
   # under the project root
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'venv/bin/pylint'
+  entrypoint: 'gcp_cicd/bin/pylint'
   args: ['src/my_module/']
   dir: 'gcp-cicd-workflow'
