@@ -61,16 +61,25 @@ steps:
       'requirements.txt'
     ]
 
+- id: 'Check Code'
+  name: gcr.io/cloud-builders/git
+  entrypoint: 'bin/bash'
+  args:
+    - -c
+    - |
+      source: /workspace/gcp_cicd/bin/pip &&
+      echo "I found the data"
+
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
   # using the verbose flag so you can see each individual test.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  volumes:
-    - name: 'gcp-cicd-workflow'
-      path: '/persistent_volume'
-  entrypoint: '/bin/bash'
-  args: ['-m', 'pytest', '-v']
-#  dir: 'gcp-cicd-workflow'
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  volumes:
+#    - name: 'gcp-cicd-workflow'
+#      path: '/persistent_volume'
+#  entrypoint: '/bin/bash'
+#  args: ['-m', 'pytest', '-v']
+##  dir: 'gcp-cicd-workflow'
 
 
 # Everything be;low this line works _except_ Step 4
