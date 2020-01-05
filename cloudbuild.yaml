@@ -61,7 +61,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
 #  args: ['-m', 'pytest', '-v']
-  args: ['-c', 'for i in range(1,5): print(i]
+  args: ['-c', 'for i in range(1,5): print(i)']
 
 # Everything be;low this line works _except_ Step 4
 #  # Step 0 - Create the environment and the project folder
