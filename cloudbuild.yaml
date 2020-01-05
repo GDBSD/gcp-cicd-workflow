@@ -62,56 +62,10 @@ steps:
   entrypoint: 'gcp_cicd/bin/python'
   args: ['-c', 'import os', 'os.chdir(../)', '-m', 'pytest', '-v']
 
-# Everything be;low this line works _except_ Step 4
-#  # Step 0 - Create the environment and the project folder
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args:
-#    [
-#      '-c',
-#      'python3 -m venv /workspace/gcp_cicd'
-##      'python3 -m os.mkdir(workspace/gcp_cicd_workflow'
-#    ]
-#
-#  # Step 1 - Clone the GitHub repo
-#- name: 'gcr.io/cloud-builders/git'
-#  args:
-#    [
-#      'clone',
-#      '--recurse-submodules',
-#      'https://github.com/GDBSD/gcp-cicd-workflow'
-#    ]
-#
-#  # Step 2 - Checkout the branch we just pushed
-#  # Variable $COMMIT_SHA provided by the Cloud Build so we test the correct commit.
-#  # Save this in a volume?
-#  # https://cloud.google.com/cloud-build/docs/build-config#volumes
-#  # https://docs.docker.com/storage/volumes/
-#  # https://medium.com/google-cloud/how-to-pass-data-between-cloud-build-steps-de5c9ebc4cdd
-#
-#- name: 'gcr.io/cloud-builders/git'
-#  args:
-#    [
-#      'checkout',
-#      '$COMMIT_SHA'
-#    ]
-#  dir: 'gcp-cicd-workflow'
-#
-#  # Step 3 - Install the dependencies
-#  # Installs any dependencies listed in the project's requirements.txt.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'gcp_cicd/bin/pip'
-#  args:
-#    [
-#      'install',
-#      '-V',
-#      '-r',
-#      'requirements.txt'
-#    ]
-#
-#  # Step 4
-#  # Runs pytest from the virtual environment (with all requirements)
-#  # using the verbose flag so you can see each individual test.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'gcp_cicd/bin/python'
-#  args: ['-m ', 'pytest', '-v']
+  # Step 5
+  # Runs pylint against the module my_module contained one folder
+  # under the project root
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+  entrypoint: 'venv/bin/pylint'
+  args: ['src/my_module/']
+  dir: 'gcp-cicd-workflow'
