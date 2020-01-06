@@ -57,11 +57,12 @@ steps:
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
   # using the verbose flag so you can see each individual test.
-- name: 'ubuntu' #'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: '/bin/bash/workspace'
+- name: 'ubuntu'
+  entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'ls' #, 'cat requirements.txt'
+      '-c', 'ls',
+#      '[ -d /tests ] && echo "Directory found" || echo "Directory /tmp not found"'
 #      'cd tests', 'ls'
 #      'python3', '-m', 'pytest', '-v', '-x'
     ]
