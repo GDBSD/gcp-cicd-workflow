@@ -61,8 +61,8 @@ steps:
   entrypoint: 'gcp_cicd/bin/python'
   args:
     [
-#      '-c', 'import os',
-#      'os.chdir("/gcp-cicd-workflow"))',
+      '-c', 'import os',
+      'os.chdir("/tests"))',
       '-m', 'pytest', '-v', '-x'
     ]
 
