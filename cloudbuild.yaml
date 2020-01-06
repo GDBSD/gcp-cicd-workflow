@@ -59,11 +59,10 @@ steps:
   # using the verbose flag so you can see each individual test.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
-  args: ['-m', 'pytest', '-v']
-#    [
-#      '-c', 'import os', 'os.chdir(../)',
-#      '-m', 'pytest', '-v',
-#      'for i in in range(1, 10): print("Count {}.format(1)")'
-#    ]
+  args: 
+    [
+      '-c', 'import os', 'os.chdir(../)',
+      '-m', 'pytest', '-v', '-x'
+    ]
 
 
