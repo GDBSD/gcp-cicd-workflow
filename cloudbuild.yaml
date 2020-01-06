@@ -55,12 +55,12 @@ steps:
     ]
 
   # Step 4
-- name: 'ubuntu'
+- name: 'python'
   entrypoint: '/bin/bash'
   args:
     [
       '-c',
-      'python', '-m', 'pytest', '-v', '-x'
+      '-m', 'pytest', '-v', '-x'
     ]
 
 #  # Step 4
