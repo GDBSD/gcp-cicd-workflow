@@ -57,11 +57,14 @@ steps:
   # Step 4
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
-  args:
-    [
-      '-c',
-      '-m', 'pytest', '-v', '-x'
-    ]
+  args: ['-m', 'pytest', '-v']
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  entrypoint: 'gcp_cicd/bin/python'
+#  args:
+#    [
+#      '-c',
+#      '-m', 'pytest', '-v', '-x'
+#    ]
 
 #  # Step 4
 #  # Runs pytest from the virtual environment (with all requirements)
