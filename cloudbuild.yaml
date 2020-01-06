@@ -57,7 +57,7 @@ steps:
   # Step 4
 - name: 'ubuntu'
   entrypoint: '/bin/bash'
-  args: ['-c', 'cd tests', 'ls']
+  args: ['-c', 'cd foo']
 
 #  # Step 4
 #  # Runs pytest from the virtual environment (with all requirements)
