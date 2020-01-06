@@ -61,7 +61,7 @@ steps:
   entrypoint: '/bin/bash/workspace'
   args:
     [
-      '-c', 'ls', 'cat requirements.txt'
+      '-c', 'ls' #, 'cat requirements.txt'
 #      'cd tests', 'ls'
 #      'python3', '-m', 'pytest', '-v', '-x'
     ]
