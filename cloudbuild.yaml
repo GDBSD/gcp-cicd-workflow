@@ -28,8 +28,7 @@ steps:
 - name: 'gcr.io/cloud-builders/git'
   args:
     [
-      'clone',
-      '--recurse-submodules',
+      'clone', '--recurse-submodules',
       'https://github.com/GDBSD/gcp-cicd-workflow'
     ]
 
@@ -60,12 +59,10 @@ steps:
   # using the verbose flag so you can see each individual test.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
-  args: ['-c', 'import os', 'os.chdir(../)', '-m', 'pytest', '-v']
+  args:
+    [
+      '-c', 'import os', 'os.chdir(../)',
+      '-m', 'pytest', '-v'
+    ]
 
-  # Step 5
-  # Runs pylint against the module my_module contained one folder
-  # under the project root
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'gcp_cicd/bin/pylint'
-  args: ['src/my_module/']
 
