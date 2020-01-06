@@ -61,7 +61,7 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'ls',
+      '-c', # 'ls',
 #      '[ -d /tests ] && echo "Directory found" || echo "Directory /tmp not found"'
 #      'cd tests', 'ls'
 #      'python3', '-m', 'pytest', '-v', '-x'
