@@ -57,7 +57,7 @@ steps:
   # Step 4
   # Runs pytest from the virtual environment (with all requirements)
   # using the verbose flag so you can see each individual test.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+- name: 'python' #'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
   args:
     [
