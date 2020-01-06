@@ -62,8 +62,7 @@ steps:
   args:
     [
       '-c', 'import os',
-      'print(os.path.exists("/gcp-cicd-workflow"))',
-      'os.chdir(../)',
+      'os.chdir("/gcp-cicd-workflow"))',
       '-m', 'pytest', '-v', '-x'
     ]
 
