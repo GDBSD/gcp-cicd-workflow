@@ -61,8 +61,8 @@ steps:
   entrypoint: '/bin/bash' # 'gcp_cicd/bin/python'
   args:
     [
-      '-c', # 'ls',
-      'cd tests', 'ls'
+      '-c', 'ls', 'cd'
+#      'cd tests', 'ls'
 #      'python3', '-m', 'pytest', '-v', '-x'
     ]
 
