@@ -62,8 +62,8 @@ steps:
   args:
     [
       '-c', 'ls',
-      'cd tests', 'ls',
-      'python3', '-m', 'pytest', '-v', '-x'
+      'cd tests', 'ls'
+#      'python3', '-m', 'pytest', '-v', '-x'
     ]
 
 
