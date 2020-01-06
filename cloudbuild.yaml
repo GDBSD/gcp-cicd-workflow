@@ -60,7 +60,7 @@ steps:
   args:
     [
       '-c',
-      'python3', '-m', 'pytest', '-v', '-x'
+      'python', '-m', 'pytest', '-v', '-x'
     ]
 
 #  # Step 4
