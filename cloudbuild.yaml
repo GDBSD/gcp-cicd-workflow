@@ -55,16 +55,21 @@ steps:
     ]
 
   # Step 4
-  # Runs pytest from the virtual environment (with all requirements)
-  # using the verbose flag so you can see each individual test.
 - name: 'ubuntu'
   entrypoint: '/bin/bash'
-  args:
-    [
-      '-c', # 'ls',
-#      '[ -d /tests ] && echo "Directory found" || echo "Directory /tmp not found"'
-#      'cd tests', 'ls'
-#      'python3', '-m', 'pytest', '-v', '-x'
-    ]
+  args: ['-c', 'ls']
+
+#  # Step 4
+#  # Runs pytest from the virtual environment (with all requirements)
+#  # using the verbose flag so you can see each individual test.
+#- name: 'ubuntu'
+#  entrypoint: '/bin/bash'
+#  args:
+#    [
+#      '-c', 'ls'
+##      '[ -d /tests ] && echo "Directory found" || echo "Directory /tmp not found"'
+##      'cd tests', 'ls'
+##      'python3', '-m', 'pytest', '-v', '-x'
+#    ]
 
 
