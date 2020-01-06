@@ -55,9 +55,15 @@ steps:
     ]
 
   # Step 4
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+- name: 'python'
   entrypoint: 'gcp_cicd/bin/python'
-  args: ['-m', 'pytest', '-v']
+  args:
+    [
+      '-c', 'python3',
+      '-m', 'pytest', '-v', '-x'
+    ]
+
+
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 #  entrypoint: 'gcp_cicd/bin/python'
 #  args:
