@@ -59,9 +59,12 @@ steps:
   # using the verbose flag so you can see each individual test.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
-  args: 
+  args:
     [
-      '-c', 'import os', 'os.chdir(../)',
+      '-c', 'import os',
+      'files = [f for f in os.listdir(".") if os.path.isfile(f)]',
+      'for f in files: print(f)',
+      'os.chdir(../)',
       '-m', 'pytest', '-v', '-x'
     ]
 
