@@ -62,8 +62,7 @@ steps:
   args:
     [
       '-c', 'import os',
-      'files = [f for f in os.listdir(".") if os.path.isfile(f)]',
-      'for f in files: print(f)',
+      'print(os.path.exists("/gcp-cicd-workflow"))',
       'os.chdir(../)',
       '-m', 'pytest', '-v', '-x'
     ]
