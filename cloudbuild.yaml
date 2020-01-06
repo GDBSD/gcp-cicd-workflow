@@ -62,11 +62,8 @@ steps:
   args:
     [
       '-c',
-#      'import os',
-#      'os.chdir("/tests"))',
-      'ls'
-#      '-c',
-#      '-m', 'pytest', '-v', '-x'
+      'cd /gcp-cicd-workflow/src/tests',
+      'python3', '-m', 'pytest', '-v', '-x'
     ]
 
 
