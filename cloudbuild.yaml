@@ -62,7 +62,8 @@ steps:
   args:
     [
       '-c', 'import os', 'os.chdir(../)',
-      '-m', 'pytest', '-v'
+      '-m', 'pytest', '-v',
+      'for i in in range(1, 10): print("Count {}.format(1)")'
     ]
 
 
