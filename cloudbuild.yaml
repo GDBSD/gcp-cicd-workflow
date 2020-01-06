@@ -55,8 +55,9 @@ steps:
     ]
 
   # Step 4
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
 - name: 'python'
-  entrypoint: '/bin/bash/python'
+  entrypoint: 'gcp_cicd/bin/python'
   args:
     [
       '-c',
