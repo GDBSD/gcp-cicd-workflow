@@ -60,7 +60,7 @@ steps:
   args:
     [
       '-c',
-      'python3', 'import os'
+      'python3', 'import os', 'os.getcwd()'
     ]
 
 
