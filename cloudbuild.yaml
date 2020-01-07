@@ -60,6 +60,7 @@ steps:
   args:
     [
       '-c', 'ls',
+      'cd /tests',
       'python3', '-m', 'pytest', '-v', '-x'
     ]
   dir: 'gcp-cicd-workflow'
