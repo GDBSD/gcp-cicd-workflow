@@ -60,8 +60,8 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'ls',
-      'python3', '-m', 'pytest', '-v', '-x'
+      '-c', 'ls'
+      # 'python3', '-m', 'pytest', '-v', '-x'
     ]
   dir: 'gcp-cicd'
 
