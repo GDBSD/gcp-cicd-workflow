@@ -70,7 +70,7 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'tree'
+      '-c', 'apt-get install tree', 'tree'
     ]
 
 
