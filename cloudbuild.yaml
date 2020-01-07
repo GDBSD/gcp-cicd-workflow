@@ -59,7 +59,7 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c',
+      '-c', 'ls',
       'python3', 'import os', 'os.getcwd()'
     ]
 
