@@ -59,7 +59,7 @@ steps:
   entrypoint: 'gcp_cicd/bin/python'
   args:
     [
-      'import os', 'os.getcwd()'
+      '-c', 'import os', 'os.getcwd()'
     ]
 
 
