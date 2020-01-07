@@ -66,4 +66,13 @@ steps:
        'python3', '-m', 'pytest', '-v', '-x'
     ]
 
+- name: 'ubuntu'
+  entrypoint: '/bin/bash'
+  args:
+    [
+      '-c', 'sudo apt-get install tree',
+      'tree'
+    ]
+
+
 
