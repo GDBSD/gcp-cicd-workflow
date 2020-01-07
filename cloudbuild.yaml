@@ -60,8 +60,9 @@ steps:
   args:
     [
       '-c', 'ls',
-      'python3', 'import os', 'os.getcwd()'
+      'python3', '-m', 'pytest', '-v', '-x'
     ]
+  dir: 'gcp-cicd-workflow'
 
 
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
