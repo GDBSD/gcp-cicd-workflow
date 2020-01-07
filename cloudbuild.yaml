@@ -59,8 +59,7 @@ steps:
   entrypoint: 'gcp_cicd/bin/python'
   args:
     [
-      '-c', 'python',
-      '-m', 'pytest', '-v', '-x'
+      'import os', 'os.getcwd()'
     ]
 
 
