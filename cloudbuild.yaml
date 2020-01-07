@@ -56,35 +56,14 @@ steps:
     ]
 
   # Step 4
+  #  # Runs pytest from the virtual environment (with all requirements)
+  #  # using the verbose flag so you can see each individual test.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'ls'
-      # 'python3', '-m', 'pytest', '-v', '-x'
+      '-c', 'ls', 'cd', 'gcp_cicd_workflow',
+       'python3', '-m', 'pytest', '-v', '-x'
     ]
-  dir: 'gcp-cicd'
-
-
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: 'gcp_cicd/bin/python'
-#  args:
-#    [
-#      '-c',
-#      '-m', 'pytest', '-v', '-x'
-#    ]
-
-#  # Step 4
-#  # Runs pytest from the virtual environment (with all requirements)
-#  # using the verbose flag so you can see each individual test.
-#- name: 'ubuntu'
-#  entrypoint: '/bin/bash'
-#  args:
-#    [
-#      '-c', 'ls'
-##      '[ -d /tests ] && echo "Directory found" || echo "Directory /tmp not found"'
-##      'cd tests', 'ls'
-##      'python3', '-m', 'pytest', '-v', '-x'
-#    ]
 
 
