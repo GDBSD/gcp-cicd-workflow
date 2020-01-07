@@ -62,7 +62,7 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'ls', 'cd', 'gcp_cicd_workflow',
+      '-c', 'cd', 'gcp_cicd_workflow', 'ls',
        'python3', '-m', 'pytest', '-v', '-x'
     ]
 
