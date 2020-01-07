@@ -56,11 +56,11 @@ steps:
 
   # Step 4
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'bin/bash'
+  entrypoint: '/bin/bash'
   args:
     [
       '-c',
-      'python3 import os', 'python3 os.getcwd()'
+      'python3 import os'
     ]
 
 
