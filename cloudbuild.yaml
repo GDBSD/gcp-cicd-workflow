@@ -8,11 +8,12 @@
 
 # Syntax comments:
 #   "entrypoint" configures a container that will run as an executable.
-#  "/bin/bash" In an Ubuntu command used to link to bash.artifacts:
-#  The "-c" bin/bash argument overrides the rest of the command line from that point on,
-      # so that it's no longer going through bash's option handling.artifacts:
-#  The "-m" Python argument is the module name. Python searches sys.path for the named module
-     # and execute its contents as the __main__ module
+#   'dir" the working directory is set to /workspace/<dir>.
+#   "/bin/bash" In an Ubuntu command used to link to bash.artifacts:
+#   The "-c" bin/bash argument overrides the rest of the command line from that point on,
+#     so that it's no longer going through bash's option handling.artifacts:
+#   The "-m" Python argument is the module name. Python searches sys.path for the named module
+#      and execute its contents as the __main__ module
 
 steps:
   # Step 0 - Create the environment
@@ -60,10 +61,9 @@ steps:
   args:
     [
       '-c', 'ls',
-      'cd /tests',
       'python3', '-m', 'pytest', '-v', '-x'
     ]
-  dir: 'gcp-cicd-workflow'
+  dir: 'gcp-cicd'
 
 
 #- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
