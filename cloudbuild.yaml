@@ -11,8 +11,8 @@
 #  "/bin/bash" In an Ubuntu command used to link to bash.artifacts:
 #  The "-c" bin/bash argument overrides the rest of the command line from that point on,
       # so that it's no longer going through bash's option handling.artifacts:
-#  The "-m" Python argument is the module name. Python searches sys.path for the named module and execute its contents
-     # as the __main__ module
+#  The "-m" Python argument is the module name. Python searches sys.path for the named module
+     # and execute its contents as the __main__ module
 
 steps:
   # Step 0 - Create the environment
@@ -56,11 +56,11 @@ steps:
 
   # Step 4
 - name: 'ubuntu' # 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  entrypoint: 'gcp_cicd/bin/python'
+  entrypoint: 'bin/bash'
   args:
     [
-      '-c', 'python'
-#      'import os', 'os.getcwd()'
+      '-c',
+#      'python3 import os', 'python3 os.getcwd()'
     ]
 
 
