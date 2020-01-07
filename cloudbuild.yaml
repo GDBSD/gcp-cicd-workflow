@@ -55,11 +55,12 @@ steps:
     ]
 
   # Step 4
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+- name: 'ubuntu' # 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: 'gcp_cicd/bin/python'
   args:
     [
-      '-c', 'import os', 'os.getcwd()'
+      '-c', 'python'
+#      'import os', 'os.getcwd()'
     ]
 
 
