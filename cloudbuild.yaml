@@ -14,10 +14,9 @@
 #     so that it's no longer going through bash's option handling.artifacts:
 #   The "-m" Python argument is the module name. Python searches sys.path for the named module
 #      and execute its contents as the __main__ module
-
-#$ bash -c runs passed arguments as a single bash script. It doesn't separate passed arguments into separate scripts.
-#
-#; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
+#  bash -c runs passed arguments as a single bash script. It doesn't separate passed arguments
+#    into separate scripts.
+#    ; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
 
 steps:
   # Step 0 - Create the environment
@@ -59,13 +58,10 @@ steps:
       'requirements.txt'
     ]
 
-#  bash -c runs passed arguments as a single bash script. It doesn't separate passed arguments
-#  into separate scripts.
-#  ; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-  args: ['-c', 'cd workspace; ls']
-
+#  args: ['-c', 'cd workspace; ls']
+  args: ['-c', 'cd workspace; source gcp_cicd/bin/activate']
 
 
 
