@@ -58,11 +58,11 @@ steps:
   # Step 4
   #  # Runs pytest from the virtual environment (with all requirements)
   #  # using the verbose flag so you can see each individual test.
-- name: 'ubuntu'
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'cd tests; python3 -m pytest -v -x'
+      '-c', 'cd tests; -m pytest -v -x'
     ]
 
     # '-m', 'pytest', '-v', '-x'
