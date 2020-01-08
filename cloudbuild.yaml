@@ -9,7 +9,7 @@
 # Syntax comments:
 #   "entrypoint" configures a container that will run as an executable.
 #   'dir" the working directory is set to /workspace/<dir>.
-#   "/bin/bash" In an Ubuntu command used to link to bash.artifacts:
+#   "/bin/bash" Is an Ubuntu command used to link to bash.artifacts:
 #   The "-c" bin/bash argument overrides the rest of the command line from that point on,
 #     so that it's no longer going through bash's option handling.artifacts:
 #   The "-m" Python argument is the module name. Python searches sys.path for the named module
@@ -58,14 +58,11 @@ steps:
       'requirements.txt'
     ]
 
+  # Step 4 - Run the tests
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-#  args: ['-c', 'cd gcp_cicd/bin; source activate; cd ../../; python -m pytest tests/']
   args: ['-c', 'source gcp_cicd/bin/activate; python3 -m pytest tests/']
 
-
-#  source /root/environments/name_Env/bin/activate
-# /workspace/gcp_cicd/bin/python
 
 
 

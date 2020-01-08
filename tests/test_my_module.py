@@ -40,11 +40,8 @@ class TestIsNumeric(object):
 class TestAdd(object):
     """This class bundles the tests for the add function in my_module."""
 
-    # def test_add_basic(self):
-    #     assert add(1, 2) == 3
-
     def test_add_basic(self):
-        assert add(1, 2) == 10
+        assert add(1, 2) == 3
 
     def test_add_zero(self):
         assert add(0, 3) == 3
