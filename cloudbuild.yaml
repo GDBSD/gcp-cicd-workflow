@@ -60,7 +60,7 @@ steps:
 
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-  args: ['-c', 'gcp_cicd/bin source activate']
+  args: ['-c', 'gcp_cicd/bin/ source activate']
 
 
 
