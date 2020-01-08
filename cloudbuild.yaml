@@ -61,7 +61,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
 #  args: ['-c', 'cd gcp_cicd/bin; source activate; cd ../../; python -m pytest tests/']
-  args: ['-c', 'source gcp_cicd/bin/activate']
+  args: ['-c', 'source gcp_cicd/bin/activate; python -m pytest tests/']
 
 
 #  source /root/environments/name_Env/bin/activate
