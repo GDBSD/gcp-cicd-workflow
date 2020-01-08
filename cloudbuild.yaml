@@ -15,6 +15,10 @@
 #   The "-m" Python argument is the module name. Python searches sys.path for the named module
 #      and execute its contents as the __main__ module
 
+#$ bash -c runs passed arguments as a single bash script. It doesn't separate passed arguments into separate scripts.
+#
+#; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
+
 steps:
   # Step 0 - Create the environment
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
@@ -62,7 +66,7 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'cd tests; -m pytest -v -x'
+      '-c', 'cd tests; python -m pytest -v -x'
     ]
 
     # '-m', 'pytest', '-v', '-x'
