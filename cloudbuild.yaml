@@ -63,7 +63,7 @@ steps:
 #  into separate scripts.
 #  ; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
 - name: 'ubuntu'
-  entrypoint`enter code here`: '/bin/bash'
+  entrypoint: '/bin/bash'
   args: ['-c', 'cd tests; ls']
 
 #  # Step 4
