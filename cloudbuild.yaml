@@ -64,22 +64,7 @@ steps:
 #  ; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-#  args: ['-c', 'cd gcp-cicd-workflow; python -m pytest -v -x']
-  args: ['-c', 'cd gcp-cicd-workflow; source ./gcp_cicd/bin/activate']
-
-#  # Step 4
-#  #  # Runs pytest from the virtual environment (with all requirements)
-#  #  # using the verbose flag so you can see each individual test.
-#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-#  entrypoint: '/bin/bash'
-#  args:
-#    [
-##      '-c', 'pip freeze' #'cd tests; python3 -m pytest -v -x'
-#      '-c', 'cd tests; python3 -m pytest -v -x'
-#    ]
-#  dir: 'gcp-cicd-workflow'
-
-# source ./name_Env/bin/activate
+  args: ['-c', 'cd workspace; ls']
 
 
 
