@@ -60,11 +60,12 @@ steps:
   #  # using the verbose flag so you can see each individual test.
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-  args:
-    [
-      '-c', 'cd', 'gcp_cicd_workflow', 'ls',
-       'python3', '-m', 'pytest', '-v', '-x'
-    ]
+  args: ['-c', 'cd tests; ls']
+#  args:
+#    [
+#      '-c', 'cd', 'gcp_cicd_workflow', 'ls',
+#       'python3', '-m', 'pytest', '-v', '-x'
+#    ]
 
 - name: 'ubuntu'
   entrypoint: '/bin/bash'
