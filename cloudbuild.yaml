@@ -60,8 +60,7 @@ steps:
 
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-#  args: ['-c', 'cd workspace; ls']
-  args: ['-c', 'cd workspace; source gcp_cicd/bin/activate']
+  args: ['-c', 'cd gcp_cicd; ls']
 
 
 
