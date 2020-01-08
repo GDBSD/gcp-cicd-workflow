@@ -60,19 +60,8 @@ steps:
   #  # using the verbose flag so you can see each individual test.
 - name: 'ubuntu'
   entrypoint: '/bin/bash'
-  args: ['-c', 'ls; cd gcp_cicd_workflow; ls']
-#  args:
-#    [
-#      '-c', 'cd', 'gcp_cicd_workflow', 'ls',
-#       'python3', '-m', 'pytest', '-v', '-x'
-#    ]
+  args: ['-c', 'ls; cd tests; ls']
 
-- name: 'ubuntu'
-  entrypoint: '/bin/bash'
-  args:
-    [
-      '-c', 'apt-get install tree', 'tree'
-    ]
 
 
 
