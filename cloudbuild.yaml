@@ -58,9 +58,9 @@ steps:
       'requirements.txt'
     ]
 
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+ - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
-  args: ['-c', 'gcp_cicd/bin/ source activate']
+  args: ['-c', 'cd gcp_cicd/bin; source activate']
 
 
 
