@@ -62,7 +62,7 @@ steps:
 #  bash -c runs passed arguments as a single bash script. It doesn't separate passed arguments
 #  into separate scripts.
 #  ; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
-- name: 'ubuntu'
+- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args: ['-c', 'cd tests; ls']
 

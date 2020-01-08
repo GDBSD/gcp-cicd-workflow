@@ -10,4 +10,11 @@ RUN apt-get update && apt-get install -y python3-pip
 
 RUN pip install --upgrade pip
 
+RUN pip install pytest
+
+RUN pip install coverage
+
+RUN pip install pytest-cov
+
+
 
