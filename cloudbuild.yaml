@@ -65,6 +65,7 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args: ['-c', 'cd tests; python -m pytest -v -x']
+  dir: 'gcp-cicd-workflow'
 
 #  # Step 4
 #  #  # Runs pytest from the virtual environment (with all requirements)
