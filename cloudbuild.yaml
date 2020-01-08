@@ -58,9 +58,9 @@ steps:
   # Step 4
   #  # Runs pytest from the virtual environment (with all requirements)
   #  # using the verbose flag so you can see each individual test.
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+- name: 'ubuntu'
   entrypoint: '/bin/bash'
-  args: ['-c', 'cd tests; ls']
+  args: ['-c', 'ls; cd gcp_cicd_workflow; ls']
 #  args:
 #    [
 #      '-c', 'cd', 'gcp_cicd_workflow', 'ls',
