@@ -62,7 +62,7 @@ steps:
   entrypoint: '/bin/bash'
   args:
     [
-      '-c', 'cd tests; -m pytest -v -x'
+      '-c', 'cd tests; python3 -m pytest -v -x'
     ]
 
     # '-m', 'pytest', '-v', '-x'
