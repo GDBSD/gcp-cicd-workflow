@@ -18,6 +18,8 @@
 #    into separate scripts.
 #    ; in bash ends a script line, and the following after semicolon is interpreted as a new script line.
 
+############################ BEGIN CI ##########################################
+
 steps:
   # Step 0 - Create the environment
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
@@ -62,6 +64,17 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   entrypoint: '/bin/bash'
   args: ['-c', 'source gcp_cicd/bin/activate; python3 -m pytest tests/']
+
+############################ END CI ##########################################
+
+############################ BEGIN CD ##########################################
+
+# Building, testing, and deploying artifacts
+# https://cloud.google.com/cloud-build/docs/configuring-builds/build-test-deploy-artifacts
+
+# Deploying to Cloud Run
+# https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-cloud-run
+
 
 
 
