@@ -2,10 +2,6 @@
 # wallet.py
 
 
-def say_hello():
-    print('Hello!')
-
-
 class InsufficientAmount(Exception):
     pass
 
