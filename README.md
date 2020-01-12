@@ -10,7 +10,7 @@ implementation of a Jupyter Lab  data science project on GCP.
 - [x] Successful test run with PyTest
 - [x] Fail build unless all tests pass
 - [x] Deploy simple Flask app from the command line
-- [ ] Add Jupyter Notebook tests
+- [ ] Add Jupyter Notebook and tests
 - [ ] Deploy Jupyter Notebook to GCP
 - [ ] Add data to GCP bucket
 - [ ] Access bucket data from Notebook
