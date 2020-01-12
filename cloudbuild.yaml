@@ -75,15 +75,26 @@ steps:
 # Deploying to Cloud Run
 # https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-cloud-run
 
+# Continuous deployment
+# Refer to Continuous deployment section in
+# https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-cloud-run
+
+# You can automate the deployment of your software to Cloud Run by creating Cloud Build triggers.
+# You can configure your triggers to build and deploy images whenever you update your source code.
+# To automate your deployment to Cloud Run:
+# In your repository root, add a config file with steps to build the image, store the image in
+# Container Registry, and then invoke the gcloud run deploy command:
+
+# Doesn't work. Not important
 #- name: 'gcr.io/cloud-builders/gcloud'
-- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
-  args:
-    [
-      'run', 'deploy', 'helloworld',
-      '--image', 'gcr.io/gdb-gcp-cicd/gcr.io/gdb-gcp-cicd/helloworld',
-      '--region', 'us-central1',
-      '--platform', 'managed', '--allow-unauthenticated'
-    ]
+#- name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
+#  args:
+#    [
+#      'run', 'deploy', 'helloworld',
+#      '--image', 'gcr.io/gdb-gcp-cicd/gcr.io/gdb-gcp-cicd/helloworld',
+#      '--region', 'us-central1',
+#      '--platform', 'managed', '--allow-unauthenticated'
+#    ]
 
 
 
