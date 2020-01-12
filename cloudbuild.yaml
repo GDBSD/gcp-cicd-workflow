@@ -75,11 +75,15 @@ steps:
 # Deploying to Cloud Run
 # https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-cloud-run
 
-# Step 5 - Deploy to a running VM
+#- name: 'gcr.io/cloud-builders/gcloud'
 - name: 'gcr.io/$PROJECT_ID/python-cloudbuild'
   args:
-    - run
-    - deploy
+    [
+      'run', 'deploy', 'helloworld',
+      '--image', 'gcr.io/gdb-gcp-cicd/gcr.io/gdb-gcp-cicd/helloworld',
+      '--region', 'us-central1',
+      '--platform', 'managed', '--allow-unauthenticated'
+    ]
 
 
 
